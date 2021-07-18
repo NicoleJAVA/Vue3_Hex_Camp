@@ -35,12 +35,35 @@
 //   obj: {}
 // }
 
+// // 老師在影片打的 begin
+// const person2 = Object.assign({}, person);
+// const person3 = {
+//   ...person
+// }
+// console.log(person === person2, person === person3); // 印出來結果會是 false false
+// person2.obj.age = 16;
+// console.log(person, person2); // 印出來結果會是 person 和 person2 都會新增 age 屬性
+// // 老師在影片打的 end
 
 // #3-2 深層拷貝
-// const person = {
-//   name: '小明',
-//   obj: {}
-// }
+const person = {
+  name: '小明',
+  obj: {}
+}
+
+// 老師在影片打的 begin 
+test = JSON.stringify(person); // nicole
+console.log("test 內容", test);
+
+const person2 = JSON.parse(JSON.stringify(person));
+console.log(person2);
+debugger;
+
+person2.obj.age = 16;
+console.log('新增 age 屬性');
+console.log(person, person2);
+// 老師在影片打的 end
+
 
 </script>
 <!-- 🙇🙇練習結束🙇🙇 -->
