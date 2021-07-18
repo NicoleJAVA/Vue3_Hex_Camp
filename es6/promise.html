@@ -33,31 +33,91 @@ const promiseSetTimeout = (status) => {
       } else {
         reject('promiseSetTimeout 失敗')
       }
-    }, 0);
+    }, 0); // 老師上課在講 2-2 時有把 0 秒改成 1 秒 
   })
 }
 
 // #2-1 基礎運用
 
+// // 老師上課打的 BEGIN
+
+// promiseSetTimeout(true)
+//   .then(function(res) {
+//     console.log('response 的內容是: ', res);
+//   })
+
+// // 老師上課打的 END
 
 // #2-2 串接
+
+// // 老師上課打的 BEGIN
+
+// promiseSetTimeout(true)
+//   .then(function(res) {
+//     console.log('第 1 次的回傳結果', res);
+
+//     return promiseSetTimeout(true)
+//   })
+//   .then(res => {
+//     console.log('第 2 次的回傳結果', res)
+//   })
+
+// // 老師上課打的 END
 
 
 // #2-3 失敗捕捉
 
+// 老師上課打的 BEGIN
+// promiseSetTimeout(false)
+//   .then(res => {
+//     console.log('原本的結果', res)
+//   })
+//   .catch(err => {
+//     console.log('失敗的流程', err)
+//   })
+// 老師上課打的 END
+
 
 // #2-4 元件運用
-// const component = {
-//   data: {},
-//   init() {
 
-//   }
-// }
+const component = {
+  data: {},
+  init() {
+    // 老師上課打的 BEGIN
+    console.log('this 的值是: ', this);
+    promiseSetTimeout(true)
+    .then(res => {
+      this.data.res = res
+      console.log('this.data 的值是: ', this.data)
+    })
+    // 老師上課打的 END
+
+  }
+}
+component.init(); // 老師上課打的
+
+
 
 
 // #3 實戰取得遠端資料
 // #3-1
 // https://github.com/axios/axios
+
+
+// 老師上課打的 BEGIN
+// 老師故意在 API 網址後面加上 /gg 來讓 API 呼叫失敗
+axios.get('https://randomuser.me/api/gg')
+  .then(res => {
+    console.log('回傳結果', res)
+    console.log('res.data.results 的內容為: ', res.data.results)
+
+  })
+  .catch(err => {
+    console.log(err.response);
+  })
+// 老師上課打的 END
+
+
 
 // #3-2 記得捕捉錯誤，Axios 錯誤捕捉技巧
 // https://randomuser.me/
